@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Udemy LearnKotlin</string>
+    <string name="hello_vous">Hello vous!</string>
+    <string name="start_green_activity">Start Green Activity</string>
+    <string name="show_dialog">show dialog</string>
+    <string name="ok">OK</string>
+    <string name="imglayoutfile">imgLayoutFile</string>
+    <string name="musique">Musique</string>
+    <string name="Video">video</string>
+    <string name="document">Document</string>
+    <string name="textview1" />
+    <string name="textview2" />
+    <string name="ajouter">Ajouter</string>
+    <string name="save">Save</string>
+    <string name="supprimer">Supprimer</string>
+    <string name="help">Help</string>
 </resources>

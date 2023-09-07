@@ -1,49 +1,68 @@
 package com.example.udemylearnkotlin
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import java.util.Arrays
 
-fun isOldEnough(age: Int): Boolean {
-    return age >= 5
-}
+
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val ages = arrayOf(4, 8, 20)
-        val names = Array(5){""}
-        names[0] = "Boby"
-        val array = Array(10) {0}
-        val age: Int = 10
-        val name: String = "Bob"
-        val height: Float = 1.60F
-        val type = if (age < 18) "est un enfant" else " est un adulte"
-
-        var typeHuman = when (age) {
-            in 1..5 -> "cest un bb"
-            in 6..18 -> "cest un ados"
-            !in 18..40 -> "n'est plus jeune"
-            else -> "condition non gere"
+        val user = User("bob", 10)
+        val btn = findViewById<Button>(R.id.start_green_activity)
+        btn.setOnClickListener() {
+            val intent = Intent(this, GreenActivity::class.java)
+            intent.putExtra("user", user)
+            startActivity(intent)
         }
 
-        if (age > 0 && name === "Bob") {
-            println("$name a $age ans.")
-            println(typeHuman)
+        val btn2 = findViewById<Button>(R.id.show_dialog_button)
+        btn2.setOnClickListener() {
+            val fragment = ConfirmDeletDialogFragment()
+            fragment.listener = object : ConfirmDeletDialogFragment.ConfirmDeletListener {
+                override fun onDialogPositiveClick() {
+                    Log.i("MainActivity", "onDialogPositiveClick()")
+                    val fileListFragment = FileListDialogFragment()
+                    fileListFragment.show(supportFragmentManager, "fileList")
+                }
+
+                override fun onDialogNegativeClick() {
+                    Log.i("MainActivity", "onDialogNegativeClick()")
+                }
+            }
+            fragment.show(supportFragmentManager, "confirmDelet")
         }
 
-        val number : Array<String> = arrayOf("un", "deux", "trois", "quatre", "cinq")
-        for ((index, numbers) in number.withIndex()){
-            if (numbers != "quatre"){
-                println("$numbers est à lindex $index")
-                continue
-                println("8")
+
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_add -> {
+                Toast.makeText(this, "Ajouter", Toast.LENGTH_LONG).show()
+                true
             }
 
-        }
+            R.id.action_delet -> {
+                Toast.makeText(this, "Supprimer", Toast.LENGTH_LONG).show()
+                true
+            }
 
-        println(array.contentToString())
-        println(names.contentToString())
+            else -> super.onOptionsItemSelected(item)
+        }
     }
+
+
 }

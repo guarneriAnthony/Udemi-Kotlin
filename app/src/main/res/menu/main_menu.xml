@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_add"
+        android:icon="@drawable/ic_add_black_24dp"
+        android:title="@string/ajouter"
+        app:showAsAction="always">
+    </item>
+
+    <item
+        android:id="@+id/action_save"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="@string/save"
+        app:showAsAction="always">
+    </item>
+
+    <item
+        android:id="@+id/action_delet"
+        android:icon="@drawable/ic_delete_black_24dp"
+        android:title="@string/supprimer"
+        app:showAsAction="ifRoom">
+    </item>
+
+    <item
+        android:id="@+id/action_help"
+        android:icon="@drawable/ic_help_black_24dp"
+        android:title="@string/help"
+        app:showAsAction="never">
+    </item>
+
+</menu>
